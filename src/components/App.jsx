@@ -38,12 +38,15 @@ export class App extends Component {
     );
   };
   componentDidMount() {
-    if (localStorage.getItem('contacts')) {
-      this.setState({ contacts: JSON.parse(localStorage.getItem('contacts')) });
+    const localStorageContact = localStorage.getItem('contacts');
+    if (localStorageContact) {
+      this.setState({ contacts: JSON.parse(localStorageContact) });
     }
   }
-  componentDidUpdate() {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  componentDidUpdate(prevPops, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
   }
 
   render() {
