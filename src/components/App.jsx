@@ -20,12 +20,6 @@ export class App extends Component {
     }));
   };
   addContact = newContact => {
-    const { contacts } = this.state;
-    const newName = newContact.name;
-    if (contacts.filter(elem => elem.name === newName).length) {
-      alert(`${newName} is alredy in contacts`);
-      return;
-    }
     this.setState(({ contacts }) => ({
       contacts: [...contacts, newContact],
     }));

@@ -20,18 +20,24 @@ export class ContactsForm extends Component {
   formSubmit = e => {
     e.preventDefault();
     const { addContact } = this.props;
-    const { addName, addNumber } = this.state;    
+    const { addName, addNumber } = this.state;
+    const { contacts } = this.props.state;
     const newContact = {
       id: nanoid(),
       name: addName,
       number: addNumber,
-    };   
-    addContact(newContact);       
-        this.setState({
+    };
+    const newName = newContact.name.toLowerCase()
+     if (contacts.filter(elem => elem.name.toLowerCase() === newName).length) {
+      alert(`${newName} is alredy in contacts`);
+      return;
+    }
+    addContact(newContact);   
+         this.setState({
           addName: '',
           addNumber: '',
-        });     
-  };
+        });
+   };
   render() {
     const { addName, addNumber } = this.state;
     return (
