@@ -16,6 +16,8 @@ export const PhonebookForm = styled.form`
   margin: 0 auto;
   padding: 20px;
   margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 8px 8px 24px 0px rgb(12 12 12 / 13%);
 `;
 export const PhonebookLable = styled.label`
   font-size: 16px;
