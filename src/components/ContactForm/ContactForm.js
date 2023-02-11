@@ -20,23 +20,17 @@ export class ContactsForm extends Component {
   formSubmit = e => {
     e.preventDefault();
     const { addContact } = this.props;
-    const { addName, addNumber } = this.state;
-    const { contacts } = this.props.state;
-    const prevContacts = contacts;
+    const { addName, addNumber } = this.state;    
     const newContact = {
       id: nanoid(),
       name: addName,
       number: addNumber,
     };   
-    addContact(newContact);
-    setTimeout(() => {
-      if (this.props.state.contacts !== prevContacts) {
+    addContact(newContact);       
         this.setState({
           addName: '',
           addNumber: '',
-        });
-      }
-    }, 0);
+        });     
   };
   render() {
     const { addName, addNumber } = this.state;
